@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19003,
-  "packagerPort": 19004,
-  "packagerPid": 36987,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 35430,
   "devToolsPort": 19002,
-  "expoServerNgrokUrl": "https://vm-q78.charian.charian-todo.exp.direct",
-  "packagerNgrokUrl": "https://packager.vm-q78.charian.charian-todo.exp.direct",
-  "ngrokPid": 37024
+  "expoServerNgrokUrl": "https://da-uvu.charian.charian-weather.exp.direct",
+  "packagerNgrokUrl": "https://packager.da-uvu.charian.charian-weather.exp.direct",
+  "ngrokPid": 35461
 }
