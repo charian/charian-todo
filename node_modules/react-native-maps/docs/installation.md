@@ -140,29 +140,16 @@ manually](https://developers.google.com/maps/documentation/ios-sdk/start). Then,
 from your project root to the directory in which you installed the
 Google Maps frameworks:
 
-    ```json
-    {
-      "name": "your-app",
-      "scripts": {
-        "postinstall": "./node_modules/react-native-maps/enable-google-maps REPLACE_ME_RELATIVE_PATH_TO_GOOGLE_MAPS_INSTALL"
-      }
-    }
-    ```
+```json
+{
+  "name": "your-app",
+  "scripts": {
+    "postinstall": "./node_modules/react-native-maps/enable-google-maps REPLACE_ME_RELATIVE_PATH_TO_GOOGLE_MAPS_INSTALL"
+  }
+}
+```
 
-    Re-run `npm install` or `yarn` to ensure the `postinstall` script is run.
-
-3. Import and add `{PROVIDER_GOOGLE}` to your JavaScript:
-    ```javascript
-      import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-      ...
-      
-      <MapView
-         provider={PROVIDER_GOOGLE}
-         style={styles.map}
-         ...
-      >
-      
-    ```
+Re-run `npm install` or `yarn` to ensure the `postinstall` script is run.
 
 ## Build configuration on Android
 
@@ -296,7 +283,7 @@ example is below:
 
 
 ```jsx
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
+import MapView from 'react-native-maps';
 ...
 const styles = StyleSheet.create({
  container: {
@@ -314,7 +301,6 @@ const styles = StyleSheet.create({
 export default () => (
    <View style={styles.container}>
      <MapView
-       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
        style={styles.map}
        region={{
          latitude: 37.78825,

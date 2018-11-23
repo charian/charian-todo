@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19004,
+  "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 97076,
+  "packagerPid": 25487,
   "devToolsPort": 19002,
   "expoServerNgrokUrl": "https://yx-5tf.charian.charian-weather.exp.direct",
   "packagerNgrokUrl": "https://packager.yx-5tf.charian.charian-weather.exp.direct",
-  "ngrokPid": 97091
+  "ngrokPid": 25507
 }

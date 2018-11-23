@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Modal from "react-native-modal";
 import SideMenu from 'react-native-side-menu';
 
+import { Screens } from './router';
 import Weather from "./Weather";
 import Menu from './Menu';
 
@@ -24,6 +25,7 @@ export default class App extends Component{
     isLoaded: false,
     error: null,
     isModalVisible: false,
+    isModalVisible2: false,
     menuOpen: false,
     locationKey: null,
     temperature: null,
@@ -37,7 +39,8 @@ export default class App extends Component{
     mty: null,
     pmStation: null,
     currentPositionPM25: null,
-    currentPositionPM10: null
+    currentPositionPM10: null,
+    
   };
 
   componentDidMount() {
@@ -134,7 +137,7 @@ export default class App extends Component{
 
 
   _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible });
-  
+    
   constructor(props) {
     super(props);
 
@@ -142,7 +145,7 @@ export default class App extends Component{
 
     this.state = {
       isOpen: false,
-      selectedItem: 'About',
+      selectedItem: 'Screen1',
     };
   }
 
@@ -161,11 +164,13 @@ export default class App extends Component{
     isOpen: false,
     selectedItem: item,
   });
+  
 
   render() {
     
     const { isLoaded, error, temperature, name, countrytext, locationtext, thenyesterday, humidity, cityname, currentPositionPM10, currentPositionPM25} = this.state;
-    const menu = <Menu onItemSelected={this.onMenuItemSelected} />;
+    const menu = <Menu onItemSelected={this.onMenuItemSelected} navigator={navigator}/>;
+    
     return (
       
       <SideMenu
@@ -188,6 +193,26 @@ export default class App extends Component{
           </View>
 
           <Modal 
+          isVisible={this.state.isModalVisible2} 
+          animationIn='bounceIn'
+          easing='ease-in'
+          animationOut='fadeOut' 
+          backdropOpacity={0.3}
+          >
+            <View style={styles.modalContainer2}>
+              <View>
+                <Text>Current Location</Text>
+              </View>
+              <View>
+                <TouchableOpacity onPress={this._toggleModal2}>
+                  <Text>Hide me!</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+
+
+          <Modal 
           isVisible={this.state.isModalVisible} 
           animationIn='bounceIn'
           easing='ease-in'
@@ -195,13 +220,23 @@ export default class App extends Component{
           backdropOpacity={0.3}
           >
             <View style={styles.modalContainer}>
-              <Text>{`This is the modal!`}</Text>
+              <View>
+                <Text>Current Location</Text>
+              </View>
+              <View>
+                <Text>Any Added Location</Text>
+              </View>
+              <TouchableOpacity onPressOut={this._toggleModal2} style={styles.locationTitle}>
+                <View>
+                  <Text>ADD New Location{"\n"}by Keyword</Text>
+                </View>
+              </TouchableOpacity>
               <TouchableOpacity onPress={this._toggleModal}>
                 <Text>Hide me!</Text>
               </TouchableOpacity>
             </View>
           </Modal>
-
+          <Screens />
           {isLoaded ? (
             <Weather
               weatherName={name}
@@ -291,5 +326,15 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 10,
+    zIndex: 99
+  },
+  modalContainer2: {
+    backgroundColor: '#fff',
+    elevation:4,
+    shadowOffset: { width: 5, height: 5 },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    zIndex: 100
   }
 });
